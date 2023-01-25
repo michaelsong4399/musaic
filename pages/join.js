@@ -75,7 +75,7 @@ export default function Join() {
                             axios
                                 .get(
                                     "https://api.spotify.com/v1/me/tracks&limit=50&offset=" +
-                                        offset,
+                                        offset.toString(),
                                     {
                                         headers: {
                                             Authorization: `Bearer ${access_token}`,
@@ -162,7 +162,7 @@ export default function Join() {
                         });
                     });
             });
-        router.push("/party/" + state + "/guest");
+        // router.push("/party/" + state + "/guest");
     }
 
     // Use access token to make API calls to get playlist
