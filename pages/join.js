@@ -71,6 +71,7 @@ export default function Join() {
 
                         // Get songs in each playlist
                         res.data.items.forEach((playlist) => {
+                            if (playlist.owner.display_name != user) return;
                             axios
                                 .get(playlist.tracks.href, {
                                     headers: {
