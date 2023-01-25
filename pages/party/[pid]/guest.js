@@ -38,7 +38,8 @@ export default function Guest() {
         const dbRef = ref(db, "pid/CUBE");
         onValue(dbRef, (snapshot) => {
             let data = snapshot.val();
-            Object.keys(data).sort((a, b) => data[a].pop - data[b].pop);
+            // if (data != null) {
+            // }
             console.log(data);
             setTracks(data);
         });
@@ -50,9 +51,16 @@ export default function Guest() {
                 <div>
                     <h1>Tracks</h1>
                     <ul>
-                        {Object.keys(tracks).map((key) => {
-                            return <li>{tracks[key].name}</li>;
-                        })}
+                        {Object.keys(tracks)
+                            .sort((a, b) => tracks[b].pop - tracks[a].pop)
+                            .map((key) => {
+                                return (
+                                    <li>
+                                        {tracks[key].name}
+                                        {tracks[key].pop}
+                                    </li>
+                                );
+                            })}
                     </ul>
                 </div>
             ) : (

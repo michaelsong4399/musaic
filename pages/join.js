@@ -84,10 +84,19 @@ export default function Join() {
                                         if (currentData === null) {
                                             return {
                                                 name: item.track.name,
+                                                user: [access_token],
                                                 pop: 1,
                                             };
                                         }
+                                        if (
+                                            currentData.user.includes(
+                                                access_token
+                                            )
+                                        ) {
+                                            return; // Abort the transaction.
+                                        }
                                         currentData.pop += 1;
+                                        currentData.user.push(access_token);
                                         return currentData;
                                     }
                                 );
