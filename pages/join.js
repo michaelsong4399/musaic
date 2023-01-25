@@ -52,59 +52,75 @@ export default function Join() {
 
     function getTracks() {
         axios
-            .get("https://api.spotify.com/v1/me/playlists", {
+            .get("https://api.spotify.com/v1/me", {
                 headers: {
                     Authorization: `Bearer ${access_token}`,
                 },
             })
-            .then((res) => {
-                console.log(res);
+            .then((name) => {
+                console.log(name.data.display_name);
+                let user = name.data.display_name;
+                axios
+                    .get("https://api.spotify.com/v1/me/playlists", {
+                        headers: {
+                            Authorization: `Bearer ${access_token}`,
+                        },
+                    })
+                    .then((res) => {
+                        console.log(res);
 
-                // Get songs in each playlist
-                res.data.items.forEach((playlist) => {
-                    axios
-                        .get(playlist.tracks.href, {
-                            headers: {
-                                Authorization: `Bearer ${access_token}`,
-                            },
-                        })
-                        .then((res) => {
-                            console.log(res);
-                            res.data.items.forEach((item) => {
-                                const dbref = ref(
-                                    db,
-                                    "pid/" + state + "/" + item.track.uri
-                                );
-                                runTransaction(
-                                    ref(
-                                        db,
-                                        "pid/" + state + "/" + item.track.uri
-                                    ),
-                                    (currentData) => {
-                                        if (currentData === null) {
-                                            return {
-                                                name: item.track.name,
-                                                user: [access_token],
-                                                pop: 1,
-                                            };
-                                        }
-                                        if (
-                                            currentData.user.includes(
-                                                access_token
-                                            )
-                                        ) {
-                                            return; // Abort the transaction.
-                                        }
-                                        currentData.pop += 1;
-                                        currentData.user.push(access_token);
-                                        return currentData;
-                                    }
-                                );
-                            });
+                        // Get songs in each playlist
+                        res.data.items.forEach((playlist) => {
+                            axios
+                                .get(playlist.tracks.href, {
+                                    headers: {
+                                        Authorization: `Bearer ${access_token}`,
+                                    },
+                                })
+                                .then((res) => {
+                                    console.log(res);
+                                    res.data.items.forEach((item) => {
+                                        const dbref = ref(
+                                            db,
+                                            "pid/" +
+                                                state +
+                                                "/" +
+                                                item.track.uri
+                                        );
+                                        runTransaction(
+                                            ref(
+                                                db,
+                                                "pid/" +
+                                                    state +
+                                                    "/" +
+                                                    item.track.uri
+                                            ),
+                                            (currentData) => {
+                                                if (currentData === null) {
+                                                    return {
+                                                        name: item.track.name,
+                                                        user: [user],
+                                                        pop: 1,
+                                                    };
+                                                }
+                                                if (
+                                                    currentData.user.includes(
+                                                        user
+                                                    )
+                                                ) {
+                                                    return; // Abort the transaction.
+                                                }
+                                                currentData.pop += 1;
+                                                currentData.user.push(user);
+                                                return currentData;
+                                            }
+                                        );
+                                    });
+                                });
                         });
-                });
+                    });
             });
-        router.push("/party/" + state + "/guest");
+        // router.push("/party/" + state + "/guest");
     }
 
     // Use access token to make API calls to get playlist
