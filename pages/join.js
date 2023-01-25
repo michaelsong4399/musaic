@@ -1,0 +1,122 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import axios from "axios";
+// import firebase from "firebase/app";
+// import "firebase/firestore";
+// import initFirebase from "/db/firebase.js";
+import { initializeApp } from "firebase/app";
+import {
+    getDatabase,
+    ref,
+    set,
+    push,
+    onValue,
+    runTransaction,
+} from "firebase/database";
+// import firebase from "firebase/app";
+// import firebase from "firebase";
+
+export default function Join() {
+    const { asPath } = useRouter();
+    // TODO: Replace the following with your app's Firebase project configuration
+    // See: https://firebase.google.com/docs/web/learn-more#config-object
+    const firebaseConfig = {
+        // ...
+        apiKey: "AIzaSyARJiKr_iPh7hiywZCWIo86al_WPfN6oH4",
+        authDomain: "musaic1.firebaseapp.com",
+        projectId: "musaic1",
+        storageBucket: "musaic1.appspot.com",
+        messagingSenderId: "62100760514",
+        appId: "1:62100760514:web:ca4ab577d5c8aaa55fd85b",
+        // The value of `databaseURL` depends on the location of the database
+        databaseURL: "https://musaic1-default-rtdb.firebaseio.com",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Initialize Realtime Database and get a reference to the service
+    const db = getDatabase(app);
+
+    let access_token;
+    let state;
+    const router = useRouter();
+
+    useEffect(() => {
+        let hash = asPath.split("#")[1];
+        let args = hash.split("&");
+        console.log(args);
+
+        access_token = args[0].split("=")[1];
+        state = args[3].split("=")[1];
+
+        console.log(access_token);
+        console.log(state);
+        getTracks();
+    }, []);
+
+    function getTracks() {
+        axios
+            .get("https://api.spotify.com/v1/me/playlists", {
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+            })
+            .then((res) => {
+                console.log(res);
+
+                // Get songs in each playlist
+                res.data.items.slice(0, 5).forEach((playlist) => {
+                    axios
+                        .get(playlist.tracks.href, {
+                            headers: {
+                                Authorization: `Bearer ${access_token}`,
+                            },
+                        })
+                        .then((res) => {
+                            console.log(res);
+                            res.data.items.forEach((item) => {
+                                const dbref = ref(
+                                    db,
+                                    "pid/" + state + "/" + item.track.uri
+                                );
+                                runTransaction(
+                                    ref(
+                                        db,
+                                        "pid/" + state + "/" + item.track.uri
+                                    ),
+                                    (currentData) => {
+                                        if (currentData === null) {
+                                            return {
+                                                name: item.track.name,
+                                                pop: 1,
+                                            };
+                                        }
+                                        currentData.pop += 1;
+                                        return currentData;
+                                    }
+                                );
+                            });
+                        });
+                });
+            });
+        router.push("/party/" + state + "/guest");
+    }
+
+    // Use access token to make API calls to get playlist
+
+    // Use playlist to get songs
+    // Store songs in firebase db
+    // Redirect to /party with party id
+
+    return (
+        <>
+            <div
+                onClick={() => {
+                    getTracks();
+                }}>
+                Callback
+            </div>
+        </>
+    );
+}
