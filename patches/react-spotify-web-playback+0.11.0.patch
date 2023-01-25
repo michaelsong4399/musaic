@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-spotify-web-playback/dist/index.mjs b/node_modules/react-spotify-web-playback/dist/index.mjs
-index 51079a0..612dc00 100644
+index 51079a0..231bcf5 100644
 --- a/node_modules/react-spotify-web-playback/dist/index.mjs
 +++ b/node_modules/react-spotify-web-playback/dist/index.mjs
 @@ -60,12 +60,12 @@ function DevicesIcon(props) {
@@ -21,7 +21,34 @@ index 51079a0..612dc00 100644
  var nano = create({ h: createElement });
  addonRule(nano);
  addonKeyframes(nano);
-@@ -765,7 +765,8 @@ async function setVolume(token, volume) {
+@@ -192,7 +192,15 @@ function Devices(props) {
+ 
+ // src/components/Volume.tsx
+ import { useEffect as useEffect2, useRef as useRef2, useState as useState2 } from "react";
+-import { usePrevious } from "react-use";
++
++export function usePrevious(value) {
++    const ref = useRef();
++    useEffect(() => {
++      ref.current = value;
++    }, [value]);
++    return ref.current;
++  }
++
+ import RangeSlider from "@gilbarbara/react-range-slider";
+ 
+ // src/components/icons/VolumeHigh.tsx
+@@ -605,7 +613,8 @@ function ErrorMessage({
+ 
+ // src/components/Info.tsx
+ import { useEffect as useEffect3, useRef as useRef3, useState as useState3 } from "react";
+-import { useMount, usePrevious as usePrevious2, useUnmount } from "react-use";
++import pkg2 from 'react-use';
++const { useMount, useUnmount } = pkg2;
+ 
+ // src/components/icons/Favorite.tsx
+ import { jsx as jsx16 } from "react/jsx-runtime";
+@@ -765,7 +774,8 @@ async function setVolume(token, volume) {
  }
  
  // src/utils.ts
@@ -31,3 +58,12 @@ index 51079a0..612dc00 100644
  var STATUS = {
    ERROR: "ERROR",
    IDLE: "IDLE",
+@@ -943,7 +953,7 @@ function Info(props) {
+   } = props;
+   const [isSaved, setIsSaved] = useState3(false);
+   const isMounted = useRef3(false);
+-  const previousId = usePrevious2(id);
++  const previousId = usePrevious(id);
+   const updateState = (state) => {
+     if (!isMounted.current) {
+       return;
