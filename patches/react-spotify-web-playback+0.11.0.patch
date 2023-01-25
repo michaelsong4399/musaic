@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-spotify-web-playback/dist/index.mjs b/node_modules/react-spotify-web-playback/dist/index.mjs
-index 51079a0..d6fcea9 100644
+index 51079a0..612dc00 100644
 --- a/node_modules/react-spotify-web-playback/dist/index.mjs
 +++ b/node_modules/react-spotify-web-playback/dist/index.mjs
 @@ -60,12 +60,12 @@ function DevicesIcon(props) {
@@ -21,27 +21,7 @@ index 51079a0..d6fcea9 100644
  var nano = create({ h: createElement });
  addonRule(nano);
  addonKeyframes(nano);
-@@ -192,7 +192,8 @@ function Devices(props) {
- 
- // src/components/Volume.tsx
- import { useEffect as useEffect2, useRef as useRef2, useState as useState2 } from "react";
--import { usePrevious } from "react-use";
-+// import pkg3 from 'react-use';
-+// const { usePrevious } = pkg3;
- import RangeSlider from "@gilbarbara/react-range-slider";
- 
- // src/components/icons/VolumeHigh.tsx
-@@ -605,7 +606,8 @@ function ErrorMessage({
- 
- // src/components/Info.tsx
- import { useEffect as useEffect3, useRef as useRef3, useState as useState3 } from "react";
--import { useMount, usePrevious as usePrevious2, useUnmount } from "react-use";
-+// import pkg2 from 'react-use';
-+// const { useMount, usePrevious: usePrevious2, useUnmount } = pkg2;
- 
- // src/components/icons/Favorite.tsx
- import { jsx as jsx16 } from "react/jsx-runtime";
-@@ -765,7 +767,8 @@ async function setVolume(token, volume) {
+@@ -765,7 +765,8 @@ async function setVolume(token, volume) {
  }
  
  // src/utils.ts
