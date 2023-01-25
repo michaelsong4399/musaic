@@ -1,9 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import firebase from "firebase/app";
-// import "firebase/firestore";
-// import initFirebase from "/db/firebase.js";
 import { initializeApp } from "firebase/app";
 import {
     getDatabase,
@@ -13,8 +10,6 @@ import {
     onValue,
     runTransaction,
 } from "firebase/database";
-// import firebase from "firebase/app";
-// import firebase from "firebase";
 
 export default function Join() {
     const { asPath } = useRouter();
