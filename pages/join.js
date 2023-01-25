@@ -68,6 +68,44 @@ export default function Join() {
                     })
                     .then((res) => {
                         console.log(res);
+                        // Get liked songs
+                        axios
+                            .get("https://api.spotify.com/v1/me/tracks", {
+                                headers: {
+                                    Authorization: `Bearer ${access_token}`,
+                                },
+                            })
+                            .then((res) => {
+                                console.log(res);
+                                res.data.items.forEach((item) => {
+                                    runTransaction(
+                                        ref(
+                                            db,
+                                            "pid/" +
+                                                state +
+                                                "/" +
+                                                item.track.uri
+                                        ),
+                                        (currentData) => {
+                                            if (currentData === null) {
+                                                return {
+                                                    name: item.track.name,
+                                                    user: [user],
+                                                    pop: 1,
+                                                };
+                                            }
+                                            if (
+                                                currentData.user.includes(user)
+                                            ) {
+                                                return; // Abort the transaction.
+                                            }
+                                            currentData.pop += 1;
+                                            currentData.user.push(user);
+                                            return currentData;
+                                        }
+                                    );
+                                });
+                            });
 
                         // Get songs in each playlist
                         res.data.items.forEach((playlist) => {
