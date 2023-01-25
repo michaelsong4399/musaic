@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-spotify-web-playback/dist/index.mjs b/node_modules/react-spotify-web-playback/dist/index.mjs
-index 51079a0..612dc00 100644
+index 51079a0..05441d0 100644
 --- a/node_modules/react-spotify-web-playback/dist/index.mjs
 +++ b/node_modules/react-spotify-web-playback/dist/index.mjs
 @@ -60,12 +60,12 @@ function DevicesIcon(props) {
@@ -21,6 +21,40 @@ index 51079a0..612dc00 100644
  var nano = create({ h: createElement });
  addonRule(nano);
  addonKeyframes(nano);
+@@ -192,7 +192,7 @@ function Devices(props) {
+ 
+ // src/components/Volume.tsx
+ import { useEffect as useEffect2, useRef as useRef2, useState as useState2 } from "react";
+-import { usePrevious } from "react-use";
++// import { usePrevious } from "react-use";
+ import RangeSlider from "@gilbarbara/react-range-slider";
+ 
+ // src/components/icons/VolumeHigh.tsx
+@@ -308,12 +308,12 @@ function Volume(props) {
+   const [isOpen, setIsOpen] = useState2(false);
+   const [volumeState, setVolumeState] = useState2(volume);
+   const timeoutRef = useRef2();
+-  const previousVolume = usePrevious(volume);
++//   const previousVolume = usePrevious(volume);
+   useEffect2(() => {
+-    if (previousVolume !== volume && volume !== volumeState) {
++    if ( volume !== volumeState) {
+       setVolumeState(volume);
+     }
+-  }, [previousVolume, volume, volumeState]);
++  }, [volume, volumeState]);
+   const handleClick = () => {
+     setIsOpen((s) => !s);
+   };
+@@ -605,7 +605,7 @@ function ErrorMessage({
+ 
+ // src/components/Info.tsx
+ import { useEffect as useEffect3, useRef as useRef3, useState as useState3 } from "react";
+-import { useMount, usePrevious as usePrevious2, useUnmount } from "react-use";
++import { useMount, useUnmount } from "react-use";
+ 
+ // src/components/icons/Favorite.tsx
+ import { jsx as jsx16 } from "react/jsx-runtime";
 @@ -765,7 +765,8 @@ async function setVolume(token, volume) {
  }
  
@@ -31,3 +65,21 @@ index 51079a0..612dc00 100644
  var STATUS = {
    ERROR: "ERROR",
    IDLE: "IDLE",
+@@ -943,7 +944,7 @@ function Info(props) {
+   } = props;
+   const [isSaved, setIsSaved] = useState3(false);
+   const isMounted = useRef3(false);
+-  const previousId = usePrevious2(id);
++//   const previousId = usePrevious2(id);
+   const updateState = (state) => {
+     if (!isMounted.current) {
+       return;
+@@ -971,7 +972,7 @@ function Info(props) {
+     }
+   });
+   useEffect3(() => {
+-    if (showSaveIcon && previousId !== id && id) {
++    if (showSaveIcon && id) {
+       updateState(false);
+       setStatus();
+     }
