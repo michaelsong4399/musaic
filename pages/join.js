@@ -162,7 +162,7 @@ export default function Join() {
                         });
                     });
             });
-        router.push("/party/" + state + "/guest");
+        // router.push("/party/" + state + "/guest");
     }
 
     // Use access token to make API calls to get playlist
