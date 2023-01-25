@@ -74,7 +74,7 @@ export default function Join() {
                         ].forEach((offset) => {
                             axios
                                 .get(
-                                    "https://api.spotify.com/v1/me/tracks&limit=50&offset=" +
+                                    "https://api.spotify.com/v1/me/tracks?limit=50&offset=" +
                                         offset.toString(),
                                     {
                                         headers: {
