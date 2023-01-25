@@ -81,13 +81,6 @@ export default function Join() {
                                 .then((res) => {
                                     console.log(res);
                                     res.data.items.forEach((item) => {
-                                        const dbref = ref(
-                                            db,
-                                            "pid/" +
-                                                state +
-                                                "/" +
-                                                item.track.uri
-                                        );
                                         runTransaction(
                                             ref(
                                                 db,
