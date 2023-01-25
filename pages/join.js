@@ -61,7 +61,7 @@ export default function Join() {
                 console.log(res);
 
                 // Get songs in each playlist
-                res.data.items.slice(0, 5).forEach((playlist) => {
+                res.data.items.forEach((playlist) => {
                     axios
                         .get(playlist.tracks.href, {
                             headers: {
@@ -95,7 +95,7 @@ export default function Join() {
                         });
                 });
             });
-        router.push("/party/" + state + "/guest");
+        // router.push("/party/" + state + "/guest");
     }
 
     // Use access token to make API calls to get playlist
