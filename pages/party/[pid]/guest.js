@@ -38,10 +38,10 @@ export default function Guest() {
         const dbRef = ref(db, "pid/CUBE");
         onValue(dbRef, (snapshot) => {
             let data = snapshot.val();
-            // if (data != null) {
-            // }
-            console.log(data);
-            setTracks(data);
+            if (data != null) {
+                console.log(data);
+                setTracks(data);
+            }
         });
     }, []);
 
