@@ -78,13 +78,13 @@ export default function Guest() {
                     </div>
                     <div className="list">
                         <div className="track-title columns is-vcentered is-mobile">
-                            <div className="column is-one-half ">
+                            <div className="column is-one-half">
                                 <div className="track-title-name">Track</div>
                             </div>
-                            <div className="column is-one-third">
+                            <div className="column is-one-quarter">
                                 <div className="track-name">Album</div>
                             </div>
-                            <div className="column is-one-third">
+                            <div className="column">
                                 <div className="track-name"> Pop.</div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ export default function Guest() {
                                                     {tracks[key].artist}
                                                 </div>
                                             </div>
-                                            <div className="column is-one-third track-album">
+                                            <div className="column is-one-quarter track-album">
                                                 {tracks[key].album}
                                             </div>
                                             <div className="column track-pop">

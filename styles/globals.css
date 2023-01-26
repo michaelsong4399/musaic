@@ -70,7 +70,7 @@
     font-size: 1.2rem;
     color: #840b96;
     margin-left: 80px;
-    width: 30vw;
+    width: 32vw;
 }
 
 .track {
@@ -130,7 +130,7 @@
 .track-album {
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 10vw;
+    /* width: 10vw; */
     display: block;
     overflow: hidden;
 
@@ -180,10 +180,18 @@
 
 /* mobile */
 @media only screen and (max-width: 1000px) {
-    /* track {
+    track {
         width: 100%;
-    } */
+    }
 
+    .track-title-name {
+        font-family: "Oxygen";
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #840b96;
+        margin-left: 80px;
+        width: 30vw;
+    }
     .topbar-logo-title {
         display: none;
     }
