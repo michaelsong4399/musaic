@@ -190,6 +190,10 @@
         margin-right: 5vw;
         width: 90vw;
     }
+    .track:hover {
+        background-color: transparent;
+        border: #840b96 0px solid;
+    }
 
     .track-title-name {
         font-family: "Oxygen";
