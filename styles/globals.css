@@ -186,8 +186,8 @@
     } */
 
     .track-img {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         padding: 0px;
     }
 
@@ -198,7 +198,7 @@
     .track {
         /* margin-left: 2vw;
         margin-right: 5vw; */
-        padding-left: 1rem;
+        padding-left: 2rem;
         padding-right: 1rem;
         width: 100vw;
     }
