@@ -77,8 +77,8 @@ export default function Guest() {
                     </div>
                     <div className="list">
                         <div className="track-title columns is-vcentered is-mobile">
-                            <div className="column is-one-third track-name">
-                                <div className="track-name">Track</div>
+                            <div className="column is-one-half ">
+                                <div className="track-title-name">Track</div>
                             </div>
                             <div className="column is-one-third">
                                 <div className="track-name">Album</div>

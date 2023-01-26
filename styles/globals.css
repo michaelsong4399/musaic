@@ -60,7 +60,17 @@
     top: 6rem;
     background-color: white;
     border-bottom: #840b96 2px solid;
+    width: 100%;
     /* padding-left: 90px; */
+}
+
+.track-title-name {
+    font-family: "Oxygen";
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #840b96;
+    margin-left: 80px;
+    width: 30vw;
 }
 
 .track {
