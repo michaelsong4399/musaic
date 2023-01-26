@@ -6,7 +6,7 @@
     background-color: white;
     /* background-color: #840b96; */
     height: 6rem;
-    width: 100vw;
+    width: 100%;
     position: fixed;
     top: 0;
     z-index: 100;
@@ -67,7 +67,7 @@
 .track {
     /* padding: 1rem; */
     /* border: #840b96 2px solid; */
-    width: 99.5vw;
+    width: 99.5%;
 
     /* rounded */
     border-radius: 0.8rem;
