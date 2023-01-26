@@ -90,6 +90,10 @@
     transition: 0.2s all;
 }
 
+.is-clickable:hover {
+    cursor: pointer;
+}
+
 .track-img {
     padding: 5px;
     width: 90px;

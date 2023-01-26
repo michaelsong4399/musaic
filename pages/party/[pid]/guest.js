@@ -49,12 +49,6 @@ export default function Guest() {
         });
     }, []);
 
-    // function Track(name, pop) {
-    //     return (
-
-    //     );
-    // }
-
     return (
         <>
             {tracks != {} ? (
