@@ -45,23 +45,42 @@ export default function Guest() {
         });
     }, []);
 
+    // function Track(name, pop) {
+    //     return (
+
+    //     );
+    // }
+
     return (
         <>
             {tracks != {} ? (
-                <div>
-                    <h1>Tracks</h1>
-                    <ul>
+                <div className="">
+                    <div className="topbar">
+                        <div className="columns">
+                            <div className="column ">
+                                <div className="topbar-title">
+                                    Cube's Playlist
+                                </div>
+                            </div>
+                            <div className="column"></div>
+                        </div>
+                    </div>
+                    <div className="container">
                         {Object.keys(tracks)
                             .sort((a, b) => tracks[b].pop - tracks[a].pop)
                             .map((key) => {
                                 return (
-                                    <li>
-                                        {tracks[key].name}
-                                        {tracks[key].pop}
-                                    </li>
+                                    <div className="track columns is-vcentered is-mobile">
+                                        <div className="column">
+                                            {tracks[key].name}
+                                        </div>
+                                        <div className="column is-one-fifth">
+                                            {tracks[key].pop}
+                                        </div>
+                                    </div>
                                 );
                             })}
-                    </ul>
+                    </div>
                 </div>
             ) : (
                 <></>

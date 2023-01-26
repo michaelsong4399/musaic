@@ -30,9 +30,6 @@ export default function Host() {
                 return;
             }
 
-            // const uri = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh";
-
-            // send a post request
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -1,0 +1,44 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Martel+Sans&family=Montserrat&family=Oxygen:wght@300&family=Squada+One&display=swap");
+/* Guest */
+
+.topbar {
+    background-color: white;
+    height: 6rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    color: #840b96;
+    padding: 0 4rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-bottom: #840b96 2px solid;
+}
+
+.topbar-title {
+    margin-top: 1rem;
+    font-family: "Squada One";
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+.container {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 7rem;
+}
+
+.track {
+    padding: 1rem;
+    border: #840b96 2px solid;
+    transition: 0.1s all;
+}
+.track:hover {
+    border: #840b96 2px solid;
+    transition: 0.1s all;
+}
+
+.column {
+    border: #840b96 2px solid;
+}

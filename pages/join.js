@@ -97,6 +97,11 @@ export default function Join() {
                                                 if (currentData === null) {
                                                     return {
                                                         name: item.track.name,
+                                                        image: item.track.album
+                                                            .images[2],
+                                                        artist: item.track
+                                                            .artists[0].name,
+                                                        album: item.track.album,
                                                         user: [user],
                                                         pop: 1,
                                                     };
@@ -162,7 +167,7 @@ export default function Join() {
                         });
                     });
             });
-        router.push("/party/" + state + "/guest");
+        // router.push("/party/" + state + "/guest");
     }
 
     // Use access token to make API calls to get playlist
