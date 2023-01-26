@@ -76,7 +76,7 @@
 .track {
     /* padding: 1rem; */
     /* border: #840b96 2px solid; */
-    width: 99.5%;
+    width: 100%;
 
     /* rounded */
     border-radius: 0.8rem;
@@ -180,9 +180,9 @@
 
 /* mobile */
 @media only screen and (max-width: 1000px) {
-    track {
-        width: 90vw;
-    }
+    /* track {
+        width: 100%;
+    } */
 
     .topbar-logo-title {
         display: none;
