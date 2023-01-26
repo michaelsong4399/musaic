@@ -147,6 +147,37 @@
     color: #840b96;
 }
 
+.hero-button-icon {
+    color: black;
+    transition: 0.2s all;
+}
+
+.hero-button-icon:hover {
+    color: #840b96;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.upvoted {
+    color: green;
+    transition: 0.2s all;
+}
+
+.upvoted:hover {
+    color: green;
+    transition: 0.2s all;
+}
+
+.downvoted {
+    color: red;
+    transition: 0.2s all;
+}
+
+.downvoted:hover {
+    color: red;
+    transition: 0.2s all;
+}
+
 /* mobile */
 @media only screen and (max-width: 1000px) {
     track {

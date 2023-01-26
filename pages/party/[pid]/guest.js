@@ -16,6 +16,7 @@ import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Guest() {
     const [tracks, setTracks] = useState({});
+    const [votes, setVotes] = useState({});
     // TODO: Replace the following with your app's Firebase project configuration
     // See: https://firebase.google.com/docs/web/learn-more#config-object
     const firebaseConfig = {
@@ -118,7 +119,92 @@ export default function Guest() {
                                                     <div className="column">
                                                         <div className="columns is-vcentered">
                                                             <div className="column">
-                                                                <span className="hero-button-icon">
+                                                                <span
+                                                                    className={
+                                                                        "hero-button-icon " +
+                                                                        (Object.keys(
+                                                                            votes
+                                                                        ).includes(
+                                                                            key
+                                                                        ) &&
+                                                                        votes[
+                                                                            key
+                                                                        ] == 1
+                                                                            ? "upvoted"
+                                                                            : "")
+                                                                    }
+                                                                    onClick={() => {
+                                                                        runTransaction(
+                                                                            ref(
+                                                                                db,
+                                                                                "pid/CUBE/" +
+                                                                                    key +
+                                                                                    "/pop"
+                                                                            ),
+                                                                            (
+                                                                                currentPop
+                                                                            ) => {
+                                                                                if (
+                                                                                    currentPop ===
+                                                                                    null
+                                                                                ) {
+                                                                                    return 1;
+                                                                                } else {
+                                                                                    if (
+                                                                                        !Object.keys(
+                                                                                            votes
+                                                                                        ).includes(
+                                                                                            key
+                                                                                        ) ||
+                                                                                        votes[
+                                                                                            key
+                                                                                        ] ==
+                                                                                            0
+                                                                                    ) {
+                                                                                        setVotes(
+                                                                                            {
+                                                                                                ...votes,
+                                                                                                [key]: 1,
+                                                                                            }
+                                                                                        );
+                                                                                        return (
+                                                                                            currentPop +
+                                                                                            1
+                                                                                        );
+                                                                                    } else {
+                                                                                        if (
+                                                                                            votes[
+                                                                                                key
+                                                                                            ] ==
+                                                                                            1
+                                                                                        ) {
+                                                                                            setVotes(
+                                                                                                {
+                                                                                                    ...votes,
+                                                                                                    [key]: 0,
+                                                                                                }
+                                                                                            );
+                                                                                            return (
+                                                                                                currentPop -
+                                                                                                1
+                                                                                            );
+                                                                                        } else {
+                                                                                            setVotes(
+                                                                                                {
+                                                                                                    ...votes,
+                                                                                                    [key]: 1,
+                                                                                                }
+                                                                                            );
+                                                                                            return (
+                                                                                                currentPop +
+                                                                                                2
+                                                                                            );
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        );
+                                                                    }}>
                                                                     <FontAwesomeIcon
                                                                         icon={
                                                                             faArrowUp
@@ -126,7 +212,96 @@ export default function Guest() {
                                                                 </span>
                                                             </div>
                                                             <div className="column">
-                                                                <span className="hero-button-icon">
+                                                                <span
+                                                                    className={
+                                                                        "hero-button-icon " +
+                                                                        (Object.keys(
+                                                                            votes
+                                                                        ).includes(
+                                                                            key
+                                                                        ) &&
+                                                                        votes[
+                                                                            key
+                                                                        ] == -1
+                                                                            ? "downvoted"
+                                                                            : "")
+                                                                    }
+                                                                    onClick={() => {
+                                                                        runTransaction(
+                                                                            ref(
+                                                                                db,
+                                                                                "pid/CUBE/" +
+                                                                                    key +
+                                                                                    "/pop"
+                                                                            ),
+                                                                            (
+                                                                                currentPop
+                                                                            ) => {
+                                                                                if (
+                                                                                    currentPop ===
+                                                                                    null
+                                                                                ) {
+                                                                                    return -1;
+                                                                                }
+                                                                                if (
+                                                                                    !Object.keys(
+                                                                                        votes
+                                                                                    ).includes(
+                                                                                        key
+                                                                                    ) ||
+                                                                                    votes[
+                                                                                        key
+                                                                                    ] ==
+                                                                                        0
+                                                                                ) {
+                                                                                    setVotes(
+                                                                                        {
+                                                                                            ...votes,
+                                                                                            [key]: -1,
+                                                                                        }
+                                                                                    );
+                                                                                    return (
+                                                                                        currentPop -
+                                                                                        1
+                                                                                    );
+                                                                                }
+                                                                                if (
+                                                                                    votes[
+                                                                                        key
+                                                                                    ] ==
+                                                                                    -1
+                                                                                ) {
+                                                                                    setVotes(
+                                                                                        {
+                                                                                            ...votes,
+                                                                                            [key]: 0,
+                                                                                        }
+                                                                                    );
+                                                                                    return (
+                                                                                        currentPop +
+                                                                                        1
+                                                                                    );
+                                                                                }
+                                                                                if (
+                                                                                    votes[
+                                                                                        key
+                                                                                    ] ==
+                                                                                    1
+                                                                                ) {
+                                                                                    setVotes(
+                                                                                        {
+                                                                                            ...votes,
+                                                                                            [key]: -1,
+                                                                                        }
+                                                                                    );
+                                                                                    return (
+                                                                                        currentPop -
+                                                                                        2
+                                                                                    );
+                                                                                }
+                                                                            }
+                                                                        );
+                                                                    }}>
                                                                     <FontAwesomeIcon
                                                                         icon={
                                                                             faArrowDown
