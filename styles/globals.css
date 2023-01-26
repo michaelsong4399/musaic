@@ -196,7 +196,11 @@
     }
 
     .track {
-        width: 90vw;
+        /* margin-left: 2vw;
+        margin-right: 5vw; */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 100vw;
     }
     .track:hover {
         background-color: transparent;
