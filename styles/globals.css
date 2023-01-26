@@ -4,16 +4,18 @@
 
 .topbar {
     background-color: white;
+    /* background-color: #840b96; */
     height: 6rem;
-    width: 100%;
+    width: 100vw;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 100;
     color: #840b96;
-    padding: 0 4rem;
+    /* color: white; */
+    padding-left: 4vw;
+    padding-right: 4vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-bottom: #840b96 2px solid;
+    border-bottom: #840b96 4px solid;
 }
 
 .topbar-title {
@@ -24,21 +26,125 @@
 }
 
 .container {
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-top: 7rem;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 10rem;
+}
+
+.topbar-right {
+}
+
+.topbar-logo {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    margin-top: 1rem;
+    /* align right */
+    float: right;
+    filter: invert(9%) sepia(74%) saturate(6459%) hue-rotate(290deg)
+        brightness(94%) contrast(99%);
+}
+
+.topbar-logo-title {
+    font-size: 2.5rem;
+    font-family: "Squada One";
+    font-weight: 400;
+    color: #840b96;
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.track-title {
+    position: fixed;
+    padding: 0.5rem;
+    padding-bottom: 0;
+    top: 6rem;
+    background-color: white;
+    border-bottom: #840b96 2px solid;
+    padding-left: 90px;
 }
 
 .track {
-    padding: 1rem;
-    border: #840b96 2px solid;
-    transition: 0.1s all;
+    /* padding: 1rem; */
+    /* border: #840b96 2px solid; */
+    width: 99.5vw;
+
+    /* rounded */
+    border-radius: 0.8rem;
+    background-color: transparent;
+    transition: 0.2s all;
+    border: #840b96 0px solid;
 }
 .track:hover {
     border: #840b96 2px solid;
-    transition: 0.1s all;
+    background-color: #fceaff;
+    transition: 0.2s all;
+}
+
+.track-img {
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 0.8rem;
+    object-fit: cover;
 }
 
 .column {
-    border: #840b96 2px solid;
+    /* border: #840b96 2px solid; */
+}
+
+.track-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 30vw;
+    display: block;
+    overflow: hidden;
+
+    font-family: "Oxygen";
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #840b96;
+}
+
+.track-artist {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 30vw;
+    display: block;
+    overflow: hidden;
+
+    font-family: "Oxygen";
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.track-album {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 10vw;
+    display: block;
+    overflow: hidden;
+
+    font-family: "Oxygen";
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.track-pop {
+    width: 10vw;
+    font-family: "Oxygen";
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #840b96;
+}
+
+/* mobile */
+@media only screen and (max-width: 1000px) {
+    track {
+        width: 90vw;
+    }
+
+    .topbar-logo-title {
+        display: none;
+    }
 }

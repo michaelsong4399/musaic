@@ -98,10 +98,11 @@ export default function Join() {
                                                     return {
                                                         name: item.track.name,
                                                         image: item.track.album
-                                                            .images[2],
+                                                            .images[0].url,
                                                         artist: item.track
                                                             .artists[0].name,
-                                                        album: item.track.album,
+                                                        album: item.track.album
+                                                            .name,
                                                         user: [user],
                                                         pop: 1,
                                                     };
@@ -146,6 +147,12 @@ export default function Join() {
                                                 if (currentData === null) {
                                                     return {
                                                         name: item.track.name,
+                                                        image: item.track.album
+                                                            .images[0].url,
+                                                        artist: item.track
+                                                            .artists[0].name,
+                                                        album: item.track.album
+                                                            .name,
                                                         user: [user],
                                                         pop: 1,
                                                     };
