@@ -25,9 +25,8 @@
     font-size: 3rem;
 }
 
-.container {
+.list {
     margin-left: 1vw;
-    margin-right: 1vw;
     margin-top: 10rem;
 }
 
@@ -61,7 +60,7 @@
     top: 6rem;
     background-color: white;
     border-bottom: #840b96 2px solid;
-    padding-left: 90px;
+    /* padding-left: 90px; */
 }
 
 .track {
