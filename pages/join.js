@@ -173,8 +173,15 @@ export default function Join() {
                                 });
                         });
                     });
+            })
+            // if not error, then push
+            .then(() => {
+                router.push("/party/" + state + "/guest");
+            })
+            .catch((err) => {
+                console.log(err);
+                router.push("/error");
             });
-        // router.push("/party/" + state + "/guest");
     }
 
     // Use access token to make API calls to get playlist

@@ -90,6 +90,12 @@
     transition: 0.2s all;
 }
 
+.is-playing {
+    border: #840b96 2px solid;
+    background-color: #fceaff;
+    transition: 0.2s all;
+}
+
 .is-clickable:hover {
     cursor: pointer;
 }
@@ -182,6 +188,26 @@
     transition: 0.2s all;
 }
 
+.error-page {
+    margin-top: 15rem;
+    text-align: center;
+}
+
+.error-logo {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    filter: invert(9%) sepia(74%) saturate(6459%) hue-rotate(290deg)
+        brightness(94%) contrast(99%);
+}
+
+.error-text {
+    font-family: "Oxygen";
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #840b96;
+}
+
 /* mobile */
 @media only screen and (max-width: 1000px) {
     /* .list {
@@ -209,6 +235,9 @@
     .track:hover {
         background-color: transparent;
         border: #840b96 0px solid;
+    }
+
+    .is-playing {
     }
 
     .track-title-name {

@@ -16,8 +16,6 @@ import {
     runTransaction,
 } from "firebase/database";
 import axios from "axios";
-
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,6 +25,7 @@ export default function Host() {
     const [tracks, setTracks] = useState({});
     const [votes, setVotes] = useState({});
     const [cd, setCd] = useState("");
+    const [playing, setPlaying] = useState("");
     // spotify sdk playback methods, you can get them any way you like
 
     // TODO: Replace the following with your app's Firebase project configuration
@@ -48,7 +47,7 @@ export default function Host() {
     // Initialize Realtime Database and get a reference to the service
     const db = getDatabase(app);
 
-    const router = useRouter();
+    // const router = useRouter();
 
     useEffect(() => {
         const dbRef = ref(db, "pid/CUBE");
@@ -62,7 +61,7 @@ export default function Host() {
     }, []);
 
     const token =
-        "BQBCTxQFnAgswyM3yYEbdu8LspH1a0jefcE5Q6tsHotfYGUiX4gseVaP9ElVK_I2yOvGd28rpYwK-3qxjyP_sySSDj_e8lBq0dQbkjjnBwI3ycyfjx75V35qKt_SmWn8UjMgRpMVOfKQh9WNkSVoPLA5g8WQgi4tLP79ulUD8x7v6yreSCf8-qj3NCxffAqX7eIJvwWxAPN6R2uEiCghBPBZ";
+        "BQBEV8UaCXSUTJCoYU71Z9JNBNv4tmVudk0sa6IX-sF0IXf0w_eK0DlI6-GQSltjvA_Yskf4_wctraXka5jD2QuxX-9_4SvwMYLfT5LONNyY2rXKIS4HNPLQorWnbc8ahVsAKQ9ZSFsPHiPM6-oj8XbOzgYXTJxJd1TmEX2e_pSQE8n4m2OgUGznym7xPQxbRtljOGxNWhPL5cpUpz1DqsKN";
 
     const getOAuthToken = useCallback(
         (callback) => callback(token?.replace("Bearer", "").trim()),
@@ -92,6 +91,9 @@ export default function Host() {
             data,
             config
         );
+
+        setPlaying(uri);
+        console.log(playing);
     }
 
     function Player() {
@@ -139,7 +141,7 @@ export default function Host() {
                 <div className="">
                     <div className="topbar">
                         <div className="columns is-vcentered is-mobile">
-                            <div className="column is-three-quarters">
+                            <div className="column is-three-quarters-desktop is-four-fifths-mobile">
                                 <div className="topbar-title">
                                     Cube's Playlist
                                 </div>
@@ -173,7 +175,12 @@ export default function Host() {
                                 return (
                                     <>
                                         <div
-                                            className="track columns is-vcentered is-mobile is-clickable"
+                                            className={
+                                                "track columns is-vcentered is-mobile is-clickable " +
+                                                (playing == key
+                                                    ? "is-playing"
+                                                    : "")
+                                            }
                                             onClick={() => playSong(key)}>
                                             <img
                                                 src={tracks[key].image}
