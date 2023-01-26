@@ -186,7 +186,9 @@
     }
 
     .track {
-        width: 100vw;
+        margin-left: 2vw;
+        margin-right: 5vw;
+        width: 90vw;
     }
 
     .track-title-name {
