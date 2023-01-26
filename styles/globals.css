@@ -208,6 +208,30 @@
     color: #840b96;
 }
 
+.start-button {
+    /* align center */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    background-color: #840b96;
+    color: white;
+    border: none;
+    width: 10rem;
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+    font-family: "Oxygen";
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: 0.2s all;
+}
+
+.start-button:hover {
+    background-color: #fceaff;
+    color: #840b96;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
 /* mobile */
 @media only screen and (max-width: 1000px) {
     /* .list {
