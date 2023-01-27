@@ -61,7 +61,7 @@ export default function Host() {
     }, []);
 
     const token =
-        "BQBEV8UaCXSUTJCoYU71Z9JNBNv4tmVudk0sa6IX-sF0IXf0w_eK0DlI6-GQSltjvA_Yskf4_wctraXka5jD2QuxX-9_4SvwMYLfT5LONNyY2rXKIS4HNPLQorWnbc8ahVsAKQ9ZSFsPHiPM6-oj8XbOzgYXTJxJd1TmEX2e_pSQE8n4m2OgUGznym7xPQxbRtljOGxNWhPL5cpUpz1DqsKN";
+        "BQDJ9jZVJzg3R5oKjPMlwExJN_tI1Q8mcTd_Dox337viNjxXOlfh50TU1roSICQZo9nqGrzJ8codaY0zst6rq7wCg8xTydLmPwLhuktJLS8qqY9BUwXvFUZMcnsNCgoYg-0voWS_vS521p2oxZk12NhLK63rUy2HLXdlISO8OmXCvxLn-lESQAbvKA4YWwWpbbz4Xk3_DG571cv7UBbbqjkY";
 
     const getOAuthToken = useCallback(
         (callback) => callback(token?.replace("Bearer", "").trim()),
